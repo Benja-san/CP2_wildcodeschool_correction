@@ -1,0 +1,5 @@
+parameters:
+	ignoreErrors:
+		- '#Constant [A-Z_]+ not found.#'
+	excludePaths:
+		- 'tests'

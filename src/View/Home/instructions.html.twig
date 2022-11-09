@@ -1,0 +1,146 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<div class="main-container">
+		<h1>Cupcake Generator</h1>
+		<div class="instructions">
+			<h2>🧁 Step 1</h2>
+			<p>
+				From this diagram, create database.
+			</p>
+			<div class="center">
+				<img src="/assets/images/diagram.png" class="diagram" alt="database model">
+			</div>
+
+			<h2>🧁 Step 2</h2>
+			<p>
+				From
+				<code>add()</code>
+				in
+				<code>AccessoryController</code>
+				<br>
+				Make the
+				<a href="/accessory/add">accessory form</a>
+				works (do not forget data validation).<br>
+				Once your form persist data in database, add some accessories for your cupcakes :
+			</p>
+			<ul>
+				<li>
+					http://images.innoveduc.fr/php_parcours/cp2/cherry.png
+				</li>
+				<li>
+					http://images.innoveduc.fr/php_parcours/cp2/donut.png
+				</li>
+				<li>
+					http://images.innoveduc.fr/php_parcours/cp2/chocolate.png
+				</li>
+				<li>
+					http://images.innoveduc.fr/php_parcours/cp2/wcs.png
+				</li>
+				<li>
+					http://images.innoveduc.fr/php_parcours/cp2/christmas-candy.png
+				</li>
+			</ul>
+
+			<h2>🧁 Step 3</h2>
+			<p>
+				From
+				<code>list()</code>
+				in
+				<code>AccessoryController</code><br>
+				Display all accessories on
+				<a href="/accessory/list">My accessories</a>
+				route.<br>
+				You are free to design this page.
+			</p>
+
+			<h2>🧁 Step 4</h2>
+			<p>
+				From
+				<code>add()</code>
+				in
+				<code>CupcakeController</code><br>
+				Make the
+				<a href="/cupcake/add">cupcake form</a>
+				works.<br>
+				Before managing the post, don't forget to manage the accessories to display them in the select field.
+			</p>
+
+			<h2>🧁 Step 5</h2>
+			<p>
+				From
+				<code>list()</code>
+				in
+				<code>CupcakeController</code><br>
+				Display all cupcakes on the list, order by ID, DESC.<br>
+				You already have a twig page (Cupcake/list.html.twig) who just expect a cupcakes array.<br>
+				Be sure to display the cupcakes accessories on this page ! (use a SQL JOIN)
+			</p>
+
+			<h2>🧁 Step 6</h2>
+			<p>
+				On the
+				<a href="/cupcake/list">Cupcake list</a>
+				there is an href link around each cupcake to show
+
+				You have to create the method and the view for this step.<br>
+				Be sure to display the cupcake accessory on this page ! (use a SQL JOIN)
+			</p>
+
+			<h2>🧁 Step 7</h2>
+			<p>
+				Now, we want to send our cupcakes. To optmize packaging, we need to put cupcakes in containers.
+												We have 3 sizes of boxes
+				<ul>
+					<li>Small : 2 cupakes max</li>
+					<li>Medium : 5 cupakes max</li>
+					<li>Large : 8 cupakes max</li>
+				</ul>
+			</p>
+			<p>
+				<u>Important !!</u>
+				An optimize packaging means a minimum number of containers and the minimum empty spaces in not full
+				containers. If we have multiple possibilities, we will try to use larger boxes first.
+			</p>
+			<ul>
+				<li>Exemple 1 : 7 cupcakes => 1 container L (and 1 empty slot)</li>
+				<li>Exemple 2 : 14 cupcakes => 2 containers L</li>
+				<li>Exemple 3 : 16 => 2 containers L</li>
+				<li>Exemple 4 : 18 => 2 containers L, 1 container S</li>
+				<li>Exemple 5 : 20 => 2 containers L, 1 container M (1 empty slot)</li>
+			</ul>
+			<p>
+				<u>Test !!</u>
+				As in code wars, you have some tests provided in file
+				<i>tests/Service/ContainerTest</i>
+				You can launch tests using the command
+				<pre><code>php vendor/bin/phpunit --colors=auto tests</code></pre>
+				in your terminal.
+			</p>
+
+			<ol>
+				<li>
+					Look at the file :
+					<code>/src/Service/Container.php</code>
+				</li>
+				<li>
+					In this class Container, create a method
+					<code>inbox(int $numberCake): array</code><br/>
+					which shoud return an array with:
+					<code>[number of L boxes, number of M boxes, number of S boxes]</code>
+				</li>
+				<li>
+					In this class, create 3 constants :	SMALL = 2, MEDIUM = 5 and LARGE = 8
+				</li>
+				<li>
+					When the method works and tests are green, look at page
+					<a href="/logistics">logistics</a>
+					<br>
+					You will find a form where you can indicate number of cupcakes.
+					Then, using your inbox() method, display thenumber of each container (L, M and S) from the number of
+					cupcakes submitted in the form.
+				</li>
+			</ol>
+		</div>
+	</div>
+{% endblock %}
